@@ -1,7 +1,8 @@
 #!/bin/bash
 
 COMUM="--runtime=60 --group_reporting=1 --directory=$PWD/fiotest --iodepth=1 --ioengine=mmap --filename_format=COREcache.\$jobnum --output-format=normal,terse"
-sequencia="1 2 4 8 12 16 24 32 40 50 60"
+sequencia="1 2 4 8 12 20 26 28 36 44 56 60 76 92 124 220"
+
 cache=12000
 
 nvCPUs=$(nproc --all)
