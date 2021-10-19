@@ -6,6 +6,8 @@ if [ ! "$teste" ]; then
 	exit 1
 fi
 
+teste=$teste-$(nproc --all)
+
 nomes=($(grep fazBenchmark fiobenchmarker.sh | grep -v function | awk '{print $2}' | tr \\012 " "))
 
 NPG2=$(ls ${nomes[0]}-*.out | tr . " " | tr - " " | awk '{print $2}')

@@ -42,6 +42,9 @@ function fazBenchmark() {
 
 }
 
+rm -f *.out
+rm -f $PWD/fiotest/*
+
 for pg2 in $NPG2; do
 	fazBenchmark CAPPDiskSequential "--rw=read" $pg2
 	fazBenchmark CAPPDiskRandom "--rw=randread" $pg2
