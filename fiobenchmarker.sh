@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMUM="--runtime=60 --group_reporting=1 --directory=$PWD/fiotest --iodepth=1 --ioengine=mmap --filename_format=CAPPcache.\$jobnum --output-format=normal,terse"
+COMUM="--group_reporting=1 --directory=$PWD/fiotest --iodepth=1 --ioengine=mmap --filename_format=CAPPcache.\$jobnum --output-format=normal,terse"
 sequencia="1 2 4 8 12 20 26 28 36 44 56 60 76 92 124 220"
 cache=12000
 
@@ -45,8 +45,8 @@ rm -f *.out
 rm -f $PWD/fiotest/*
 
 for pg2 in $NPG2; do
-	fazBenchmark CAPPDiskSequential "--rw=read" $pg2
-	fazBenchmark CAPPDiskRandom "--rw=randread" $pg2
+	fazBenchmark CAPPDiskSequential "--rw=read --runtime=60" $pg2
+	fazBenchmark CAPPDiskRandom "--rw=randread --runtime=60" $pg2
 	fazBenchmark CAPPMemorySequential "--rw=read --pre_read=1 --runtime=10 --time_based=1" $pg2
 	fazBenchmark CAPPMemoryRandom "--rw=randread --pre_read=1 --runtime=10 --time_based=1" $pg2
 
